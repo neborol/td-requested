@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import './_variables.scss'; // The variables styles
+@import './_css-reset.scss'; // The css reset styles
+
+
+
+  body {
+      width: 100%;
+      font-family: 'Roboto', sans-serif;
+  }
+
+  .bold-text {
+      font-size: 19px;
+      font-weight: 500;
+  }
+
+  .thin-text {
+      font-size: 14px;
+  }
+
+  .item-icon  {
+      font-size: 18px;
+      width: 18px !important;
+  }

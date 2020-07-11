@@ -1,0 +1,85 @@
+@import '../../../_variables.scss'; // The variables styles
+
+
+.nav-bar {
+  background-color: $tdDarkGreen !important;
+  color: white;
+  overflow: hidden;
+
+  .insurance-label {
+    margin: 4px 0 4px 5%;
+  }
+
+  .nav_links, .nav_links-login {
+    margin-top: 9px;
+    display: inline-block;
+  }
+
+  .logo-container, .insurance-label, .middle-group {
+    float: left;
+  }
+
+  .end-group {
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    width: 28%;
+  }
+}
+
+
+
+@media(max-width: 780px) {
+    .nav-bar { 
+        padding: 10px 50px;
+        .menu-icon {
+            font-size: 41px;
+            position: absolute;
+            left: 3px;
+            top: 6px;
+        }        
+    }
+
+    .end-group {
+        width: 18px;
+        justify-content: flex-end;
+        .icon-ref {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .login-text, .nav_links {
+            display: none;
+        }
+    }
+    .middle-group {
+        display: none;
+    }
+}
+
+@media(min-width: 780px) {
+    .nav-bar {
+        padding: 10px 72px;
+        .menu-icon {
+            display: none;
+        }
+    }
+    .end-group {
+        .icon-ref {
+            position: relative; /* constrains the icons */
+            padding-right: 19px;
+            .item-icon {
+                position: absolute;
+                top: 2px;
+                right: 0;
+            }
+        }
+    }
+
+    .middle-group {
+        margin-left: 2%;
+        display: flex;
+        width: 37%;
+        justify-content: space-evenly;
+    }
+}
