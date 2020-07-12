@@ -1,0 +1,91 @@
+@import "../../../_variables";
+
+.design-container {
+    .std-text {
+        color: $stdTextColor;
+    }
+    .h-extra {
+        font-weight: 500;
+    }
+}
+
+
+.controls-container {
+    .personal-input-set-1, .personal-input-set-2 {
+        display: flex;
+    }
+    .form-item-container {
+        margin: 10px;
+    }
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        margin: 4px 7px;
+    }
+}
+
+.side-button {
+    width: 100%;
+    white-space: normal; /* Enable word wrap in button element */
+    word-wrap: break-word; /* Enable word wrap in button element */
+}
+
+@media(max-width: 780px) {
+    .design-container {
+        .left-column {
+            float: none;
+            width: 100%;
+            padding: 5px;
+        }
+        .right-column {
+            float: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .extra-title {width: 100%;}
+        .extra-xname { width: 100%;}
+        .extra-initial { width: 100%;}
+        .extra-email { width: 100%;}
+        .extra-dob { width: 100%;}
+        .extra-sin { width: 100%;}
+        
+        .controls-container {
+            .personal-input-set-1, .personal-input-set-2 {
+                justify-content: space-between;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media(min-width: 780px) {
+    .design-container {
+        .left-column {
+            float: left;
+            width: 75%;
+            padding: 15px;
+        }
+        .right-column {
+            float: left;
+            width: 25%;
+            padding: 15px;
+        }
+        .extra-title {width: 62px;}
+        .extra-xname { width: 130px;}
+        .extra-initial { width: 100px;}
+        .extra-email { width: 180px;}
+        .extra-dob { width: 100px;}
+        .extra-sin { width: 190px;}
+        
+        .controls-container {
+            .personal-input-set-1, .personal-input-set-2 {
+                justify-content: space-between;
+                flex-direction: row;
+            }
+        }
+    }
+}
