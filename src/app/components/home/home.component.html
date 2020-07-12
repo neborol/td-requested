@@ -1,46 +1,47 @@
 <div class="design-standard-container">
-        <mat-card class="parent-card-container">
-          <mat-card-content class="container">
-            <form [formGroup]="addVideoForm" novalidate>
-              <div class="design-item-container">
-                <mat-card>
-                  <div><span class="item-title">Enter the Video Title:</span></div>
-                  <mat-form-field>
-                    <input matInput formControlName="videoTitle" placeholder="Video Title" type="text">
-                  </mat-form-field>
-                </mat-card>
-              </div>
+    <h1 class="display-h1">Tell Us About Yourself</h1>
 
-              <div class="design-item-container">
-                  <mat-card>
-                    <div><span class="item-title">Select a video Category:</span></div>
-                    <mat-form-field class="option-field">
-                      <mat-label>Select an option</mat-label>
-                      <mat-select matSelect [(value)]="selected" formControlName="videoCategory">
-                        <mat-option value="">None</mat-option>
-                        <mat-option value="relief">Relief</mat-option>
-                        <mat-option value="diplomatic">Diplomatic</mat-option>
-                        <mat-option value="protest">Protest</mat-option>
-                      </mat-select>
-                    </mat-form-field>
+    <p>
+        Thanks for choosing TD Insurance! In order to safely 
+        set up your new accounts and services, please tell 
+        us about yourslef.
+    </p>
 
-                    <p>You selected: selected</p>
+    <h1 class="display-h1">Personal Information</h1>
 
-                  </mat-card>
-                </div>
+    <form [formGroup]="addVideoForm" novalidate>
+        <div class="design-item-container">
+            <div><span class="item-title">Enter the Video Title:</span></div>
+            <mat-form-field>
+            <input matInput formControlName="videoTitle" placeholder="Video Title" type="text">
+            </mat-form-field>
+        </div>
+
+        <div class="design-item-container">
+            <div><span class="item-title">Select a video Category:</span></div>
+            <mat-form-field class="option-field">
+                <mat-label>Select an option</mat-label>
+                <mat-select matSelect [(value)]="selected" formControlName="videoCategory">
+                <mat-option value="">None</mat-option>
+                <mat-option value="relief">Relief</mat-option>
+                <mat-option value="diplomatic">Diplomatic</mat-option>
+                <mat-option value="protest">Protest</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <p>You selected: selected</p>
+
+        </div>
 
 
-              <div class="design-item-container">
-                <mat-card>
-                  <div><span class="item-title">Enter the Video Description:</span></div>
-                  <mat-form-field>
-                    <textarea matInput formControlName="videoDescription" placeholder="Video Description"></textarea>
-                  </mat-form-field>
-                </mat-card>
-              </div>
+        <div class="design-item-container">
+            <div><span class="item-title">Enter the Video Description:</span></div>
+            <mat-form-field>
+            <textarea matInput formControlName="videoDescription" placeholder="Video Description"></textarea>
+            </mat-form-field>
+        </div>
 
-            </form>
-          </mat-card-content>
+    </form>
 
           <div class="news-form-submit-btn-container">
             <button  mat-raised-button
@@ -48,5 +49,4 @@
               Submit Video Data
             </button>
           </div>
-        </mat-card>
       </div>

@@ -1,0 +1,11 @@
+@import "../_variables";
+
+// Structuring of the main display area managed by the routing module
+//     All the routes will be displayed in this space.
+.content-display-container {
+    width: 100%;
+    max-width: 1400px;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
