@@ -1,87 +1,96 @@
 <div class="design-container">
 
-<!-- Left column -->
+  <!-- Left column of the 2 columned layout -->
   <div class="left-column">
+    <h1 class="display-h1">Tell Us About Yourself</h1>
 
-    
-        <h1 class="display-h1">Tell Us About Yourself</h1>
+    <p class="std-text text-content-p">
+      Thanks for choosing TD Insurance! In order to safely
+      set up your new accounts and services, please tell
+      us about yourslef.
+    </p>
 
-        <p class="std-text text-content-p">
-            Thanks for choosing TD Insurance! In order to safely 
-            set up your new accounts and services, please tell 
-            us about yourslef.
-        </p>
-    
-        <h1 class="display-h1">Personal Information</h1>
-    
-        <form [formGroup]="addVideoForm" novalidate>
-    
-            <div class="controls-container">
-    
-                <div class="personal-input-set-1">
-                        <div class="form-item-container">
-                            <mat-form-field class="option-field extra-title">
-                                <mat-label>Title</mat-label>
-                                <mat-select matSelect formControlName="infoTitle" placeholder="Title" required>
-                                <mat-option>-</mat-option>
-                                <mat-option *ngFor="let title of titles" [value]="title">
-                                    {{title.name}}
-                                </mat-option>
-                                </mat-select>
-                                <!-- <mat-error *ngIf="infoTitle.hasError('required')">Please select a title</mat-error> -->
-                                <mat-hint>{{addVideoForm.get('infoTitle').value.name}}</mat-hint>
-                            </mat-form-field>
-                        </div>
-            
-                        <div class="form-item-container">
-                            <mat-form-field class="extra-xname">
-                                <input matInput formControlName="firstName" placeholder="Firt Name" type="text" required>
-                            </mat-form-field>
-                        </div>
-            
-                        <div class="form-item-container">
-                            <mat-form-field class="extra-initial">
-                                <input matInput formControlName="middleInitial" placeholder="Middle Initial" type="text">
-                            </mat-form-field>
-                        </div>
-            
-                        <div class="form-item-container">
-                            <mat-form-field class="extra-xname">
-                                <input matInput formControlName="lastName" placeholder="Last Name" type="text" required>
-                            </mat-form-field>
-                        </div>
-                </div>
-    
-                <div class="personal-input-set-2">
-                    <div class="form-item-container">
-                        <mat-form-field class="extra-email">
-                            <input matInput formControlName="email" placeholder="Email" type="text" required>
-                        </mat-form-field>
-                    </div>
-    
-                    <div class="form-item-container">
-                        <mat-form-field class="extra-dob">
-                            <input matInput formControlName="dateOfBirth" placeholder="Date of Birth" type="text">
-                        </mat-form-field>
-                    </div>
-    
-                    <div class="form-item-container">
-                        <mat-form-field class="extra-sin">
-                            <input matInput formControlName="socialInsuranceNumber" placeholder="Social Insurance Number" type="text" required>
-                        </mat-form-field>
-                    </div>
-                </div>
-    
-            </div>
-    
-        </form>
+    <h1 class="display-h1">Personal Information</h1>
 
+    <form [formGroup]="personalInforForm" novalidate>
 
+      <div class="controls-container">
+
+        <div class="personal-input-set-1">
+          <!-- The title form control -->
+          <div class="form-item-container">
+            <mat-form-field class="option-field extra-title">
+              <mat-label>Title</mat-label>
+              <mat-select matSelect formControlName="infoTitle" placeholder="Title" required>
+                <mat-option>-</mat-option>
+                <mat-option *ngFor="let title of titles" [value]="title">
+                  {{title.name}}
+                </mat-option>
+              </mat-select>
+              <!-- <mat-error *ngIf="infoTitle.hasError('required')">Please select a title</mat-error> -->
+              <mat-hint>{{personalInforForm.get('infoTitle').value.name}}</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!-- The first name form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-xname">
+              <input matInput formControlName="firstName" placeholder="Firt Name" type="text" required>
+            </mat-form-field>
+          </div>
+
+          <!-- The middle name initials form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-initial">
+              <input matInput formControlName="middleInitial" placeholder="Middle Initial" type="text">
+            </mat-form-field>
+          </div>
+
+          <!-- The last name form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-xname">
+              <input matInput formControlName="lastName" placeholder="Last Name" type="text" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="personal-input-set-2">
+          <!-- The email form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-email">
+              <input matInput formControlName="email" placeholder="Email" type="text" required>
+            </mat-form-field>
+          </div>
+
+          <!-- The date of birth form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-dob">
+              <input matInput formControlName="dateOfBirth" placeholder="Date of Birth" type="text" required>
+            </mat-form-field>
+          </div>
+
+          <!-- The sin number form control -->
+          <div class="form-item-container">
+            <mat-form-field class="extra-sin">
+              <input matInput formControlName="socialInsuranceNumber" placeholder="Social Insurance Number" type="text"
+                required>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+    </form>
+
+    <!-- The submit and cancel buttons for the form -->
     <div class="btn-container">
-      <button mat-raised-button color="warn">
+      <button (click)="personalInforForm.reset()" mat-raised-button color="warn">
         Cancel
       </button>
-      <button class="light-green-bg" mat-raised-button>
+      <!-- Disable the button and submit the form only if all the form controls are valid. -->
+      <!-- On submit, pass the templateRef as first parameter and the form value collected from all the controls, as the second parameter. -->
+      <button (click)="displayFormValues(dataToBSent, personalInforForm.value)" [disabled]="personalInforForm.invalid"
+        class="light-green-bg" mat-raised-button>
         Submit
       </button>
     </div>
@@ -89,18 +98,40 @@
 
 
 
-<!-- Right column -->
+  <!-- The Right column -->
   <div class="right-column">
     <h2 class="display-h2 h-extra">You are applying for:</h2>
     <div class="std-text">
-        TD Travel Medical Insurance
+      TD Travel Medical Insurance
     </div> <br>
     <div>
-        <button class="light-green-bg side-button" mat-raised-button>
-            See More Coverage Options
-        </button>
+      <button class="light-green-bg side-button" mat-raised-button>
+        See More Coverage Options
+      </button>
     </div>
   </div>
 
 
 </div>
+
+
+<!-- Modal contents to be displayed as the template ref passed to the displayFormValues() method call above. -->
+<ng-template #dataToBSent>
+  <mat-list>
+    <mat-list-item>Title: <span class="result">{{ currentSelectedData.infoTitle.name }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>First Name: <span class="result">{{ currentSelectedData.firstName }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Middle Initial: <span class="result">{{ currentSelectedData.middleInitial }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Last Name: <span class="result">{{ currentSelectedData.lastName }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Email Address: <span class="result">{{ currentSelectedData.email }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Date Of Birth: <span class="result">{{ currentSelectedData.dateOfBirth }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>SIN: <span class="result">{{ currentSelectedData.socialInsuranceNumber }}</span> </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+</ng-template>

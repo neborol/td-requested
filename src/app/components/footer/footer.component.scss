@@ -1,4 +1,6 @@
-@import '../../../_variables.scss';
+// import the variables file, which makes sure that any color changes 
+// of the future, should be done in just one pace.
+@import '../../../_variables.scss'; 
 
 .footer-container {
     color: $contrastTextColor;
@@ -46,7 +48,7 @@
     }
 }
 
-
+// Media query required by the very small screens 
 @media(max-width: 480px) {
     .footer-container {
         .f-base {
@@ -55,6 +57,7 @@
     }
 }
 
+// Media query required by the small screens 
 @media(max-width: 780px) {
     .footer-container {
         padding: 15px 10px 250px;
@@ -80,7 +83,7 @@
     }
 }
 
-
+// Media query required by the medium size screens 
 @media(min-width: 780px) and (max-width: 1000px) {
     .footer-container {
         background-position: -1% 41px; 
@@ -96,6 +99,7 @@
     }
 }
 
+// Media query required by the very large 
 @media(min-width: 1000px) and (max-width: 1300px) {
     .footer-container {
         // background-position: 4% 41px; 
@@ -112,6 +116,7 @@
     }
 }
 
+// Media query required by the very large screens
 @media(min-width: 1300px) {
     .footer-container {
         background-position: 1% 8px;

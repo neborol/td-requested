@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material';
+import { JsonpClientBackend } from '@angular/common/http';
 
 interface ITitle {
   name: string;
@@ -13,9 +15,14 @@ interface ITitle {
 })
 export class HomeComponent implements OnInit {
 
-  addVideoForm: FormGroup;
+  personalInforForm: FormGroup;  // Will hold the form controls
+
+  // Respective regular expression types to be used to validate the form.
   alphaNRegex = environment.alphaNRegex;
-  editAlphaNRegex = environment.editAlphaNRegex;
+  numberRegex = environment.numberRegex;
+  emailRegex = environment.emailRegex;
+  dateRegex = environment.dateRegex;
+  currentSelectedData;  // On form submit, the form data is stored here for easy access in the template.
 
   titles: ITitle[] = [
     { name: 'Prof.'},
@@ -25,18 +32,27 @@ export class HomeComponent implements OnInit {
     { name: 'Miss'}
   ];
 
-  constructor() { }
+  // Inject the MatDialog reference that would be used to display a modal
+  constructor(public dialog: MatDialog) { }
 
+  // Setting up the form validation
   ngOnInit() {
-    this.addVideoForm = new FormGroup({
+    this.personalInforForm = new FormGroup({
       infoTitle: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      firstName: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      middleInitial: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      email: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      dateOfBirth: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
-      socialInsuranceNumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(28), Validators.pattern(this.alphaNRegex)]),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(this.alphaNRegex)]),
+      middleInitial: new FormControl('', [Validators.minLength(1), Validators.maxLength(2), Validators.pattern(this.alphaNRegex)]),
+      lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern(this.alphaNRegex)]),
+      email: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(40), Validators.pattern(this.emailRegex)]),
+      dateOfBirth: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(40), Validators.pattern(this.dateRegex)]),
+      socialInsuranceNumber: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(16), Validators.pattern(this.numberRegex)]),
     });
+  }
+
+  // This method is called from the template when the submit button is JsonpClientBackend.
+  displayFormValues(templateRef: TemplateRef<any>, data) {
+    this.currentSelectedData = data;
+    this.dialog.open(templateRef);
+    console.log(data);
   }
 
 }

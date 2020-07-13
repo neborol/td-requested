@@ -2,73 +2,42 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
    MatButtonModule,
-//    MatToolbarModule,
     MatIconModule,
-//    MatSidenavModule,
-//    MatDrawer,
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
     MatMenuModule,
-//    MatTabsModule,
-//    MatDialogModule,
-//    MatRadioModule,
-//    MatCheckboxModule,
-//    MatExpansionModule,
-//    MatSlideToggleModule,
-//    MatDatepickerModule,
-//    MatTableModule,
-//    MatChipsModule,
-//    MatNativeDateModule,
-//    MatBadgeModule
+    MatDividerModule,
+    MatListModule,
+    MatDialogModule
 } from '@angular/material';
 
 @NgModule({
    imports: [
       CommonModule,
       MatButtonModule,
-    //   MatToolbarModule,
        MatIconModule,
-    //   MatSidenavModule,
        MatInputModule,
        MatFormFieldModule,
        MatSelectModule,
        MatMenuModule,
-    //   MatTabsModule,
-    //   MatDialogModule,
-    //   MatRadioModule,
-    //   MatCheckboxModule,
-    //   MatExpansionModule,
-    //   MatSlideToggleModule,
-    //   MatDatepickerModule,
-    //   MatTableModule,
-    //   MatChipsModule,
-    //   MatNativeDateModule,
-    //   MatBadgeModule
+       MatDividerModule,
+       MatListModule,
+       MatDialogModule
    ],
    exports: [
       MatButtonModule,
-    //   MatToolbarModule,
        MatIconModule,
-    //   MatSidenavModule,
        MatInputModule,
        MatFormFieldModule,
        MatSelectModule,
        MatMenuModule,
-    //   MatTabsModule,
-    //   MatDialogModule,
-    //   MatRadioModule,
-    //   MatCheckboxModule,
-    //   MatExpansionModule,
-    //   MatSlideToggleModule,
-    //   MatDatepickerModule,
-    //   MatTableModule,
-    //   MatChipsModule,
-    //   MatNativeDateModule,
-    //   MatBadgeModule
+       MatDividerModule,
+       MatListModule,
+       MatDialogModule
    ],
    providers: [
-    //   MatDrawer
+   //   MatDialog
    ]
 })
 

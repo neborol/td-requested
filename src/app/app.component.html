@@ -2,8 +2,9 @@
 <!-- The header component -->
 <app-header></app-header>
 
-<!-- The dynamic pages -->
+<!-- Wrapping the router outlet in order to control content centralization and layout padding.-->
 <div class="content-display-container">
+  <!-- The dynamic pages handled by the angular router would all be loaded here -->
   <router-outlet></router-outlet>
 </div>
 

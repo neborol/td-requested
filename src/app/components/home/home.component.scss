@@ -1,5 +1,7 @@
+// Import the variable file
 @import "../../../_variables";
 
+// The design container holds the main design, such that it can be copied and re-used. 
 .design-container {
     .std-text {
         color: $stdTextColor;
@@ -9,7 +11,7 @@
     }
 }
 
-
+// This container holds the individual controls
 .controls-container {
     .personal-input-set-1, .personal-input-set-2 {
         display: flex;
@@ -81,7 +83,7 @@
         .extra-xname { width: 130px;}
         .extra-initial { width: 100px;}
         .extra-email { width: 180px;}
-        .extra-dob { width: 100px;}
+        .extra-dob { width: 130px;}
         .extra-sin { width: 190px;}
         
         .controls-container {
@@ -91,4 +93,9 @@
             }
         }
     }
+}
+
+// Make the form data to be submitted displayed in blue contrast
+.result {
+    color: blue;
 }
