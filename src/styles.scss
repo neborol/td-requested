@@ -43,3 +43,38 @@
       background-color: $tdLightGreen;
       color: #ffffff;
   }
+
+  .dark-green-bg {
+      background-color: $tdDarkGreen;
+      color: #ffffff;
+  }
+
+//   nav drawer control
+
+mat-drawer-container {
+    mat-drawer {
+      width: 200px;
+      .mat-drawer-inner-container {
+        background-color: #3f89b5;
+      }
+    }
+  }
+  
+.mat-drawer-content {
+    margin-top: 20px;
+}
+.end-group {
+    .mat-button {
+        line-height: 23px;
+        padding: 0 1px;
+    }
+}
+
+.page-display-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 8px;
+    border: solid 1px $tdDarkGreen;
+    padding: 15px;
+}

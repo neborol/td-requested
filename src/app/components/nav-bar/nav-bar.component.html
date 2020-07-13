@@ -1,39 +1,124 @@
 <!-- Navbar -->
 <div class="nav-bar" role="banner">
     <!-- Mobile devices menu -->
-    <mat-icon class="item-icon menu-icon">menu</mat-icon>
+    <mat-icon (click)="toggleMobileMenu()" class="item-icon menu-icon">menu</mat-icon>
 
     <!-- TD Logo -->
-    <div class="logo-container">
+    <div routerLink="/" class="logo-container">
         <img width="40" alt="Td Logo" src="assets/images/tdlogo.png" />
     </div>
     <!-- Insurance Label -->
-    <div class="bold-text insurance-label">TD Insurance</div>
+    <div class="bold-text insurance-label"  routerLink="/">TD Insurance</div>
 
     <!-- Middle links group -->
     <div class="middle-group">
-        <span class="thin-text nav_links">Products</span>
-        <span class="thin-text nav_links">Claims</span>
-        <span class="thin-text nav_links">Contact Us</span>
+        <span routerLink="products" class="thin-text nav_links">Products</span>
+        <span routerLink="claims" class="thin-text nav_links">Claims</span>
+        <span routerLink="contacts" class="thin-text nav_links">Contact Us</span>
     </div>
 
     <!-- End links group -->
     <div class="end-group">
         <span class="thin-text nav_links icon-ref">
-            Ontario
-            <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            <button mat-button [matMenuTriggerFor]="prov">
+                <span> {{selectedProvice}}  </span>
+                 <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #prov="matMenu" >
+                <button (click)="getSelectedProvince(province)" mat-menu-item *ngFor="let province of provinces">{{province}}</button>
+            </mat-menu>
         </span>
         <span class="thin-text nav_links icon-ref">
-            EN
-            <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            <button style="max-width: 45px" mat-button [matMenuTriggerFor]="lang">
+                <span> {{selectedLanguage}}  </span>
+                 <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #lang="matMenu" >
+                <button (click)="getSelectedLanguage(language)" mat-menu-item *ngFor="let language of languages">{{language}}</button>
+            </mat-menu>
         </span>
+
         <span class="thin-text nav_links icon-ref">
-            <mat-icon class="item-icon">search</mat-icon>
+            <mat-icon (click)="toggleSearch()" class="search-icon">search</mat-icon>
         </span>
-        <span class="thin-text nav_links-login icon-ref">
+
+        <span routerLink="login" style="margin-right: 5px;" class="thin-text nav_links-login icon-ref">
             <span class="login-text">login</span>
-            <mat-icon class="item-icon">lock</mat-icon>
+            <mat-icon class="login-icon" style="font-size: 17px;">lock</mat-icon>
         </span>
     </div>
   
 </div>
+
+
+
+<!-- Mobile navbar container -->
+<div class="mobile-menu-contents dark-green-bg" [ngClass]="{'show-mobile-menu': mobileMenuOpen===true, 'hide-mobile-menu': mobileMenuOpen===false}">
+    <div (click)="navigatetoLink('products')" class="mobile-nav-links-container">
+        <a class="mobile-menu-item" mat-menu-item >
+            <mat-icon class="menu-icon" aria-label="login icon">local_offer</mat-icon>
+            Products
+        </a>        
+    </div>
+
+    <div (click)="navigatetoLink('claims')" class="mobile-nav-links-container">
+        <a class="mobile-menu-item" mat-menu-item >
+            <mat-icon class="menu-icon" aria-label="Edit photos">beach_access</mat-icon>
+            Claims
+        </a>        
+    </div>
+
+    <div (click)="navigatetoLink('contacts')" class="mobile-nav-links-container">
+        <a class="mobile-menu-item" mat-menu-item>
+            <mat-icon class="menu-icon" aria-label="edit user list">contact_mail</mat-icon>
+            Contact Us
+        </a>         
+    </div>
+   
+    <div class="mobile-nav-links-container dropdown-icon">
+        <mat-icon class="menu-icon" aria-label="edit user list">flag</mat-icon>
+        <span class="thin-text nav_links icon-ref">
+            <button mat-button [matMenuTriggerFor]="provMobile">
+                <span> {{selectedProvice}}  </span>
+                    <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #provMobile="matMenu" >
+                <button (click)="getSelectedProvince(province)" mat-menu-item *ngFor="let province of provinces">{{province}}</button>
+            </mat-menu>
+        </span>    
+    </div>
+
+    <div class="mobile-nav-links-container dropdown-icon">
+        <mat-icon class="menu-icon" aria-label="edit user list">language</mat-icon>
+        <span class="thin-text nav_links icon-ref">
+            <button mat-button [matMenuTriggerFor]="langMobile">
+                <span > {{selectedLanguage}}  </span>
+                    <mat-icon class="item-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #langMobile="matMenu" >
+                <button (click)="getSelectedLanguage(language)" mat-menu-item *ngFor="let language of languages">{{language}}</button>
+            </mat-menu>
+        </span>   
+    </div>
+
+    <div (click)="closeAndToggleSearch()" class="mobile-nav-links-container">
+        <a class="mobile-menu-item" mat-menu-item >
+            <mat-icon class="menu-icon" aria-label="edit user list">search</mat-icon>
+            Search
+        </a>         
+    </div>
+                               
+</div>
+
+<div  [ngClass]="{'turn-on-overlay': mobileMenuOpen===true, 'turn-off-overlay': mobileMenuOpen===false}" (click)="toggleMobileMenu()" class="dark-content-overlay"></div>   
+
+<div class="search-container" [ngClass]="{'showSearchBox': showSearchInput===true, 'hideSearchBox': showSearchInput===false}">
+    <mat-form-field class="search-field">
+        <mat-label>Search a product</mat-label>
+        <input matInput type="text" [(ngModel)]="searchValue">
+        <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearchTerm()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+

@@ -32,18 +32,21 @@
     white-space: normal; /* Enable word wrap in button element */
     word-wrap: break-word; /* Enable word wrap in button element */
 }
+.text-content-p {
+    padding: 0 5px;
+}
 
 @media(max-width: 780px) {
     .design-container {
         .left-column {
             float: none;
             width: 100%;
-            padding: 5px;
+            padding: 10px;
         }
         .right-column {
             float: none;
             width: 100%;
-            padding: 5px;
+            padding: 10px;
         }
 
         .extra-title {width: 100%;}
@@ -67,12 +70,12 @@
         .left-column {
             float: left;
             width: 75%;
-            padding: 15px;
+            padding: 20px;
         }
         .right-column {
             float: left;
             width: 25%;
-            padding: 15px;
+            padding: 20px;
         }
         .extra-title {width: 62px;}
         .extra-xname { width: 130px;}

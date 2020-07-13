@@ -10,11 +10,10 @@ import { ProductsComponent } from './components/products/products.component';
 import { ClaimsComponent } from './components/claims/claims.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AngularMaterialModule } from './angular-material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -28,7 +27,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ClaimsComponent,
     ContactUsComponent,
     LoginComponent,
-    LogoutComponent,
     HomeComponent,
     PageNotFoundComponent
   ],
@@ -38,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularMaterialModule,
     ReactiveFormsModule,
     CommonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
